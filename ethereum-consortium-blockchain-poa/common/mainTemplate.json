@@ -36,7 +36,7 @@
 			}
 		},
 		"adminPassword": {
-			"type": "securestring",
+			"type": "string",
 			"defaultValue": "",
 			"metadata": {
 				"description": "Administrator password for each deployed VM"
@@ -205,7 +205,7 @@
 		"dockerImageEtheradmin": "etheradmin:hybrid",
 		"dockerImageEthstat": "ethstat:hybrid",
 		"dockerImageValidator": "validator:hybrid",
-		"baseUrl": "https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain-poa/common/",
+		"baseUrl": "https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain-poa/common",
 		"accessType": "SPN",
 		"vmssDeploymentNames": "vmss-deploy",
 		"deploymentMode": "[if(parameters('isJoiningExistingNetwork'),'Member', 'Leader')]",
