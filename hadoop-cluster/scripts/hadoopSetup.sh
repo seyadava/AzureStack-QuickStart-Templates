@@ -388,6 +388,7 @@ setup_node () {
         sudo -u hdfs -i ${HDFS} namenode -format
         check_error $? "Could not format NameNode"
 
+        ulimit -n 16384
         # Start HDFS Namenode
         sudo -u hdfs -i $HADOOP_HOME/sbin/hadoop-daemon.sh --script hdfs start namenode
         check_error $? "Could not start NameNode"
