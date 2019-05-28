@@ -37,17 +37,14 @@ start() {
     echo -n $"Starting $desc: "
     case "$ROLE" in
         NameNode)
-            ulimit -n 16384
             sudo -u hdfs -i ${HADOOP_HOME}/sbin/start-dfs.sh
             RETVAL=$?
         ;;
         ResourceManager)
-            ulimit -n 16384
             sudo -u yarn -i ${HADOOP_HOME}/sbin/start-yarn.sh
             RETVAL=$?
         ;;
         JobHistory)
-            ulimit -n 16384
             sudo -u mapred -i ${HADOOP_HOME}/sbin/mr-jobhistory-daemon.sh start historyserver
             RETVAL=$?
         ;;
