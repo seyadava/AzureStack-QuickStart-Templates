@@ -88,18 +88,6 @@ ROLE=`hostname`
 
 ############################################################
 #
-# 	Post-Install sets nofile parameter and reboots VM
-#
-#
-postinstall() {
-    sudo su - 
-    echo '* hard nofile 65535' >> /etc/security/limits.conf
-}
-
-
-
-############################################################
-#
 # 	Install pre-reqs
 #
 #
@@ -436,10 +424,10 @@ setup_node () {
 
     }
 
-    echo -e '* soft nofile 65535' >> /etc/security/limits.conf
-    echo -e '* hard nofile 65535' >> /etc/security/limits.conf
-    echo -e '* soft nproc 65535' >> /etc/security/limits.conf
-    echo -e '* hard nproc 65535' >> /etc/security/limits.conf
+    echo -e '* soft nofile 68768' >> /etc/security/limits.conf
+    echo -e '* hard nofile 68768' >> /etc/security/limits.conf
+    echo -e '* soft nproc 68768' >> /etc/security/limits.conf
+    echo -e '* hard nproc 68768' >> /etc/security/limits.conf
 
     echo -e '
 if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
@@ -538,13 +526,6 @@ then
     setup_node
     echo 'DONE' >> setup_status
 fi
-
-# # Post-install hadoop
-# if [ ! -f post_status ];
-# then
-#     postinstall
-#     echo 'DONE' >> post_status
-# fi
 
 Log "Success"
 
