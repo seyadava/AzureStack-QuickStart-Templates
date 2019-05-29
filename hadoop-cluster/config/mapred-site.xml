@@ -5,7 +5,7 @@
             The amount of memory to request from the scheduler for each map task.
         </description>
         <name>mapreduce.map.memory.mb</name>
-        <value>1536</value>
+        <value>3072</value>
     </property>
     <property>
         <description>
@@ -35,7 +35,7 @@
             The number of threads used to move files.
         </description>
         <name>mapreduce.jobhistory.move.thread-count</name>
-        <value>3</value>
+        <value>10</value>
     </property>
     <property>
         <description>
@@ -44,7 +44,7 @@
             already in progress, so spills may be larger than this threshold when it is set to less than .5
         </description>
         <name>mapreduce.map.sort.spill.percent</name>
-        <value>0.99</value>
+        <value>0.7</value>
     </property>
     <property>
         <description>
@@ -107,14 +107,14 @@
             The number of streams to merge at once while sorting files. This determines the number of open file handles.
         </description>
         <name>mapreduce.task.io.sort.factor</name>
-        <value>400</value>
+        <value>32</value>
     </property>
     <property>
         <description>
             The default number of parallel transfers run by reduce during the copy(shuffle) phase.
         </description>
         <name>mapreduce.reduce.shuffle.parallelcopies</name>
-        <value>50</value>
+        <value>32</value>
     </property>
     <property>
         <description>
