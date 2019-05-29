@@ -159,6 +159,10 @@
         <value>32768</value>
     </property>
     <property>
+        <name>dfs.datanode.max.transfer.threads</name>
+        <value>8192</value>
+    </property>
+    <property>
         <description>
             The number of bytes per checksum. Must not be larger than dfs.stream-buffer-size
         </description>
