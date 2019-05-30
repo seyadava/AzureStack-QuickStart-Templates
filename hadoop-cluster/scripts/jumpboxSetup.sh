@@ -281,5 +281,8 @@ restart_nodes
 # install hadoop.
 install_hadoop
 
+# Restart all Hadoop nodes one more time
+restart_nodes
+
 Log "Success"
 exit 0
