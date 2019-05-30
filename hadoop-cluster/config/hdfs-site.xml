@@ -160,7 +160,11 @@
     </property>
     <property>
         <name>dfs.datanode.max.transfer.threads</name>
-        <value>8192</value>
+        <value>16384</value>
+    </property>
+    <property>
+        <name>dfs.datanode.handler.count</name>
+        <value>300</value>
     </property>
     <property>
         <description>
