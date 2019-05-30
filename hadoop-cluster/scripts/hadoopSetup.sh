@@ -267,6 +267,15 @@ add_users () {
 
 install_hadoop () {
 
+    echo -e '* soft nofile 68768' >> /etc/security/limits.conf
+    echo -e '* hard nofile 68768' >> /etc/security/limits.conf
+    echo -e '* soft nproc 68768' >> /etc/security/limits.conf
+    echo -e '* hard nproc 68768' >> /etc/security/limits.conf
+    echo -e 'root soft nofile 68768' >> /etc/security/limits.conf
+    echo -e 'root hard nofile 68768' >> /etc/security/limits.conf
+    echo -e 'root soft nproc 68768' >> /etc/security/limits.conf
+    echo -e 'root hard nproc 68768' >> /etc/security/limits.conf
+    
     # Download Hadoop from a random source
     local RET_ERR=1
     while [[ $RET_ERR -ne 0 ]];
@@ -423,11 +432,6 @@ setup_node () {
         sudo -u hdfs -i $HADOOP_HOME/sbin/hadoop-daemon.sh --script hdfs stop namenode
 
     }
-
-    echo -e '* soft nofile 68768' >> /etc/security/limits.conf
-    echo -e '* hard nofile 68768' >> /etc/security/limits.conf
-    echo -e '* soft nproc 68768' >> /etc/security/limits.conf
-    echo -e '* hard nproc 68768' >> /etc/security/limits.conf
 
     echo -e '
 if test -f /sys/kernel/mm/transparent_hugepage/enabled; then
