@@ -372,7 +372,7 @@ setup_node () {
         # Install
         mv $FILENAME /etc/systemd/system/
         chmod 755  /etc/systemd/system/$FILENAME
-
+        ulimit -n 68768
         # Load, enable, and start service
         systemctl daemon-reload
         systemctl enable $FILENAME
