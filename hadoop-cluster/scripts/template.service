@@ -8,6 +8,8 @@ Requires=network-online.target
 User=SED_USER
 Group=hadoop
 Type=forking
+LimitNOFILE=68768
+LimitNPROC=68768
 
 # Script location
 ExecStart=SED_START
