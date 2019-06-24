@@ -165,39 +165,6 @@
                     }
                 }
             }
-        },
-        {
-            "name": "[concat(parameters('clusterName'),variables('masters')[copyIndex()],'/masterCustomScript')]",
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "masterNodes"
-            ],
-            "copy": {
-                "name": "masterHadoopSetup",
-                "count": "[variables('numberMasters')]"
-            },
-            "tags": {
-                "displayName": "hadoopSetup"
-            },
-            "properties": {
-                "publisher": "Microsoft.Azure.Extensions",
-                "type": "CustomScript",
-                "typeHandlerVersion": "2.0",
-                "autoUpgradeMinorVersion": "true",
-                "settings": {
-                    "fileUris": [
-                        "[concat(parameters('_artifactsLocation'),'/scripts/hadoopSetup.sh')]",
-                        "[concat(parameters('_artifactsLocation'),'/scripts/template.service')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/sources.txt')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/core-site.xml')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/hdfs-site.xml')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/mapred-site.xml')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/yarn-site.xml')]"
-                    ],
-                    "commandToExecute": "[concat('bash ./hadoopSetup.sh ',parameters('numberWorkerNodes'),' ',parameters('replication'))]"
-                }
-            }
         }
     ],
     "outputs": {}
