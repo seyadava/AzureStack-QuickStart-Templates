@@ -139,34 +139,6 @@
                     }
                 }
             }
-        },
-        {
-            "name": "[concat(variables('vmName'),'/jumpboxCustomScript')]",
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId(resourceGroup().name, 'Microsoft.Compute/virtualMachines',variables('vmName'))]"
-            ],
-            "tags": {
-                "displayName": "jumpboxSetup"
-            },
-            "properties": {
-                "publisher": "Microsoft.Azure.Extensions",
-                "type": "CustomScript",
-                "typeHandlerVersion": "2.0",
-                "autoUpgradeMinorVersion": "true",
-                "settings": {
-                    "fileUris": [
-                        "[concat(parameters('_artifactsLocation'),'/scripts/jumpboxSetup.sh')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/sources.txt')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/core-site.xml')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/hdfs-site.xml')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/mapred-site.xml')]",
-                        "[concat(parameters('_artifactsLocation'),'/config/yarn-site.xml')]"
-                    ],
-                    "commandToExecute": "[concat('bash jumpboxSetup.sh',' ',parameters('numberWorkerNodes'),' ',parameters('adminPassword'),' ',parameters('replication'))]"
-                }
-            }
         }
     ],
     "outputs": {}
